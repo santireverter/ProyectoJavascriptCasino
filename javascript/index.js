@@ -1,15 +1,6 @@
 let resultado = 0;
 let contador = 0;
 do{
-function continuaJugando(){
-    let continua = +prompt("Desea continuar jugando? 1- SI / 2-NO")
-    if(continua == 2){
-        return contador++;
-    }
-    else{
-        alert("Espere un segundo que lo llevamos al inicio");
-    }
-}
 let luckyNumber = +prompt("Ingrese su numero de la suerte (y que sea positivo)")
 let tipoDeJuego = +prompt("Quiere jugar al: 1-Piedra, Papel o Tijera / 2- Tirar una moneda para probar suerte");
 if (tipoDeJuego == 1){
@@ -94,3 +85,15 @@ else{
 }
 }
 while(contador != 1)
+
+
+
+function continuaJugando(){
+    let continua = +prompt("Desea continuar jugando? 1- SI / 2-NO")
+    if(continua == 2){
+        return contador++;
+    }
+    else{
+        alert("Espere un segundo que lo llevamos al inicio");
+    }
+}
