@@ -81,7 +81,7 @@ else if(tipoDeJuego == 2){
     }
 }
 else{
-    alert("Por favor ingrese un numero valido de entre las opcion")
+    alert("Por favor ingrese un numero valido de entre las opciones")
 }
 }
 while(contador != 1)
