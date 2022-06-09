@@ -1,21 +1,22 @@
-let resultado = 0;
+let valor = 0;
 let contadorExterno = 0;
 let contadorInterno = 0;
+
 do {
-    let tipoDeJuego = +prompt("Quiere jugar al: 1-Piedra, Papel o Tijera / 2- Tirar una moneda para probar suerte");
+    let tipoDeJuego = +prompt("Quiere jugar al: 1-Piedra, Papel o Tijera / 2- Cara o Cruz");
     if(tipoDeJuego == 1) { // Piedra papel o Tijeras
         do{ 
             contadorInterno = 0;
             let eleccion = +prompt("Elija 1-Piedra/ 2-Papel/ 3-Tijera");
-            resultado = numeroAleatorio(0, 2);
+            valor = numeroAleatorio(0, 2);
             switch (eleccion) {
                 case 1:
-                    if (resultado == 0) {
+                    if (valor == 0) {
                         alert("La maquina hizo Piedra, hay empate");
                         repetirJuego();
                         break;
                     }
-                    else if (resultado == 1) {
+                    else if (valor == 1) {
                         alert("La maquina hizo Papel, Usted pierde");
                         repetirJuego();
                         break;
@@ -26,12 +27,12 @@ do {
                         break;
                     }
                 case 2:
-                    if (resultado == 0) {
+                    if (valor == 0) {
                         alert("La maquina hizo Piedra, Usted gana");
                         repetirJuego();
                         break;
                     }
-                    else if (resultado == 1) {
+                    else if (valor == 1) {
                         alert("La maquina hizo Papel, hay empate");
                         repetirJuego();
                         break;
@@ -42,12 +43,12 @@ do {
                         break;
                     }
                 case 3:
-                    if (resultado == 0) {
+                    if (valor == 0) {
                         alert("La maquina hizo Piedra, Usted pierde");
                         repetirJuego();
                         break;
                     }
-                    else if (resultado == 1) {
+                    else if (valor == 1) {
                         alert("La maquina hizo Papel, Usted gana");
                         repetirJuego();
                         break;
@@ -67,23 +68,23 @@ do {
         do {  
             contadorInterno = 0;
             let eleccion = +prompt("Elija 1-Cara/ 2-Cruz")
-            resultado = numeroAleatorio(0, 1);
-            if (resultado == 0 && eleccion == 1) {
+            valor = numeroAleatorio(0, 1);
+            if (valor == 0 && eleccion == 1) {
                 alert("se tira la moneda y el resultado es...");
                 alert("Salio cara, Usted gana");
                 repetirJuego();
             }
-            else if (resultado == 0 && eleccion == 2) {
+            else if (valor == 0 && eleccion == 2) {
                 alert("se tira la moneda y el resultado es...");
                 alert("Salio cara, Usted pierde");
                 repetirJuego();
             }
-            else if (resultado == 1 && eleccion == 1) {
+            else if (valor == 1 && eleccion == 1) {
                 alert("se tira la moneda y el resultado es...");
                 alert("Salio cruz, Usted pierde");
                 repetirJuego();
             }
-            else if (resultado == 1 && eleccion == 2) {
+            else if (valor == 1 && eleccion == 2) {
                 alert("se tira la moneda y el resultado es...");
                 alert("Salio cruz, Usted gana");
                 repetirJuego();
