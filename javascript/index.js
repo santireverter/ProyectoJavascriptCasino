@@ -1,10 +1,26 @@
 let valor = 0;
 let contadorExterno = 0;
 let contadorInterno = 0;
-let dinero = 1000;
+let dinero = 0;
 let dineroApostado = 0;
+
+class Jugador{
+    constructor (nombre, apellido, dinero){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dinero = dinero;
+    }
+}
+
+const movimientos = [];
+const jugadores = [];
+
+let nombre = prompt("Ingrese su nombre");
+let apellido = prompt("Ingrese su apellido");
+dinero = +prompt("Ingrese la cantidad de dinero que usted desea jugar");
+jugadores.push(new Jugador(nombre, apellido, dinero))
+
 do {
-    alert("usted posee " + dinero + " pesos");
     let tipoDeJuego = +prompt("Quiere jugar al: 1-Piedra, Papel o Tijera / 2- Cara o Cruz");
     if (tipoDeJuego == 1) { // Piedra papel o Tijeras
         do {
@@ -59,7 +75,7 @@ do {
                         }
                         else if (valor == 1) {
                             alert("La maquina hizo Papel, Usted gana");
-                            calcularGanancia();
+                            calcularGanancia(); 
                             repetirJuego();
                             break;
                         }
@@ -84,26 +100,26 @@ do {
             dineroApostado = +prompt("Cuanto desea apostar?")
             if (dineroApostado <= dinero) {
                 let eleccion = +prompt("Elija 1-Cara/ 2-Cruz")
-                valor = numeroAleatorio(0, 1);
-                if (valor == 0 && eleccion == 1) {
+                valor = numeroAleatorio(1, 2);
+                if (valor == 1 && eleccion == 1) {
                     alert("se tira la moneda y el resultado es...");
                     alert("Salio cara, Usted gana");
                     calcularGanancia();
                     repetirJuego();
                 }
-                else if (valor == 0 && eleccion == 2) {
+                else if (valor == 1 && eleccion == 2) {
                     alert("se tira la moneda y el resultado es...");
                     alert("Salio cara, Usted pierde");
                     calcularPerdida();
                     repetirJuego();
                 }
-                else if (valor == 1 && eleccion == 1) {
+                else if (valor == 2 && eleccion == 1) {
                     alert("se tira la moneda y el resultado es...");
                     alert("Salio cruz, Usted pierde");
                     calcularPerdida();
                     repetirJuego();
                 }
-                else if (valor == 1 && eleccion == 2) {
+                else if (valor == 2 && eleccion == 2) {
                     alert("se tira la moneda y el resultado es...");
                     alert("Salio cruz, Usted gana");
                     calcularGanancia();
@@ -122,6 +138,7 @@ do {
     else {
         alert("Por favor ingrese un numero valido de entre las opciones");
     }
+    mostrarMovimientos();
     continuaJugando();
 }
 while (contadorExterno == 0)
@@ -147,10 +164,22 @@ function numeroAleatorio(min, max) { //Funcion generadora de numeros aleatorios
 }
 
 function calcularGanancia(){
-    dinero = dinero + (dineroApostado*2);
+    dinero = dinero + dineroApostado;
+    movimientos.push(dineroApostado);
     alert("su cantidad de dinero es " + dinero);
 }
 function calcularPerdida(){
     dinero = dinero - dineroApostado;
+    movimientos.push(-dineroApostado);
     alert("su cantidad de dinero es " + dinero);
 }
+
+function mostrarMovimientos(){
+    let mostrar = +prompt("desea ver sus movimientos? 1- SI / 2- NO");
+    if(mostrar == 1){
+        for (let i = 0; i < movimientos.length; i++){
+            alert(movimientos[i]);
+        }
+    }
+}
+
