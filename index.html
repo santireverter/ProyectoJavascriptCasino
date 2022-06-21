@@ -42,6 +42,23 @@
         </nav>
     </header>
     <body>
+        <div class="jugador">
+            
+        </div>
+        <form action="">
+            <label for="">
+                <input type="text" placeholder="Ingrese su Nombre" id="nombre">
+            </label>
+            <label for="">
+                <input type="text" placeholder="Ingrese su Apellido" id="apellido">
+            </label>
+            <label for="">
+                <input type="number" placeholder="Ingrese cantidad de dinero" id="dinero">
+            </label>
+            <label for="">
+                <button onclick="ingresarNuevoUsuario()">Ingresar</button>
+            </label>
+        </form>
         <div class="contenedor">
             <a href=""><div class="contenedorJuegos">
                 <h3>Piedra Papel o Tijera</h3>
@@ -56,8 +73,25 @@
                 </div>
             </div></a> 
         </div>
+        <div class="ppt">
+            <h3>Ingrese monton a apostar</h3>
+            <label for="">
+                <input type="number" placeholder="Ingrese monto">
+            </label>
+            <h3>Elija Piedra, Papel o Tijera</h3>
+            <label for="">
+                <input type="button" value="Piedra">
+            </label>
+            <label for="">
+                <input type="button" value="Papel">
+            </label>
+            <label for="">
+                <input type="button" value="Tijera">
+            </label>
+            <h4>El resultado es...</h4>
+        </div>
     </body>
-    <script src="./javascript/index.js"></script>
+    <!-- <script src="./javascript/index.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
         integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
         crossorigin="anonymous"></script>

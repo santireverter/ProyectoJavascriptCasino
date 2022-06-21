@@ -15,11 +15,17 @@ class Jugador{
 const movimientos = [];
 const jugadores = [];
 
-let nombre = prompt("Ingrese su nombre");
-let apellido = prompt("Ingrese su apellido");
-dinero = +prompt("Ingrese la cantidad de dinero que usted desea jugar");
+function ingresarNuevoUsuario(){
+let nombre = document.getElementById("nombre").value;
+let apellido = document.getElementById("apellido").value;
+dinero = document.getElementById("dinero").value;
 jugadores.push(new Jugador(nombre, apellido, dinero))
-
+let perfil = document.getElementById("jugador");
+let nuevoJugador = document.createElement("li");
+nuevoJugador = `<h3>${nombre}  ${apellido}</h3>
+                <p>${dinero}</p>`
+perfil.append(nuevoJugador);
+}
 do {
     let tipoDeJuego = +prompt("Quiere jugar al: 1-Piedra, Papel o Tijera / 2- Cara o Cruz");
     if (tipoDeJuego == 1) { // Piedra papel o Tijeras
