@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="./estilo/estilo.css">
     <title>Simulador Interactivo (Casino)</title>
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Simulador de Casino</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -41,62 +43,69 @@
             </div>
         </nav>
     </header>
-    <body>
-        <div class="jugador">
-            
-        </div>
-        <form action="">
-            <label for="">
-                <input type="text" placeholder="Ingrese su Nombre" id="nombre">
-            </label>
-            <label for="">
-                <input type="text" placeholder="Ingrese su Apellido" id="apellido">
-            </label>
-            <label for="">
-                <input type="number" placeholder="Ingrese cantidad de dinero" id="dinero">
-            </label>
-            <label for="">
-                <button onclick="ingresarNuevoUsuario()">Ingresar</button>
-            </label>
-        </form>
-        <div class="contenedor">
-            <a href=""><div class="contenedorJuegos">
+    <div>
+        <ul id="jugador">
+            <li>
+                <h3>lucky</h3>
+                <p>dinero mucho</p>
+            </li>
+        </ul>
+    </div>
+    <form action="">
+        <label for="">
+            <input type="text" placeholder="Ingrese su Nombre" id="nombre" value="santiago">
+        </label>
+        <label for="">
+            <input type="text" placeholder="Ingrese su Apellido" id="apellido" value="reverter">
+        </label>
+        <label for="">
+            <input type="number" placeholder="Ingrese cantidad de dinero" id="dinero" value="1000">
+        </label>
+        <a href="" onclick="ingresarNuevoUsuario()">Ingresar</a>
+    </form>
+    <div class="contenedor">
+        <a href="">
+            <div class="contenedorJuegos">
                 <h3>Piedra Papel o Tijera</h3>
                 <div class="circulo1">
 
                 </div>
-            </div></a> 
-            <a href=""><div class="contenedorJuegos">
+            </div>
+        </a>
+        <a href="">
+            <div class="contenedorJuegos">
                 <h3>Cara o Cruz</h3>
                 <div class="circulo2">
 
                 </div>
-            </div></a> 
-        </div>
-        <div class="ppt">
-            <h3>Ingrese monton a apostar</h3>
-            <label for="">
-                <input type="number" placeholder="Ingrese monto">
-            </label>
-            <h3>Elija Piedra, Papel o Tijera</h3>
-            <label for="">
-                <input type="button" value="Piedra">
-            </label>
-            <label for="">
-                <input type="button" value="Papel">
-            </label>
-            <label for="">
-                <input type="button" value="Tijera">
-            </label>
-            <h4>El resultado es...</h4>
-        </div>
-    </body>
-    <!-- <script src="./javascript/index.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
-        integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
-        integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
-        crossorigin="anonymous"></script>
+            </div>
+        </a>
+    </div>
+    <div class="ppt">
+        <h3>Ingrese monton a apostar</h3>
+        <label for="">
+            <input type="number" placeholder="Ingrese monto">
+        </label>
+        <h3>Elija Piedra, Papel o Tijera</h3>
+        <label for="">
+            <input type="radio" value="Piedra" name="eleccion" id="Piedra">Piedra
+        </label>
+        <label for="">
+            <input type="radio" value="Papel" name="eleccion" id="Papel">Papel
+        </label>
+        <label for="">
+            <input type="radio" value="Tijera" name="eleccion" id="Tijera">Tijera
+        </label>
+        <button onclick="piedraPapelTijera()"></button>
+        <h4>El resultado es...</h4>
+    </div>
+<script src="./javascript/index.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" 
+     integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+     crossorigin="anonymous"></script> 
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" 
+     integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" 
+     crossorigin="anonymous"></script> 
 </body>
+
 </html>

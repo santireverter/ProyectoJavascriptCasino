@@ -42,3 +42,7 @@
 header{
     font-size: 25px;
 }
+.jugador{
+    height: 200px;
+    width: 200px;
+}
