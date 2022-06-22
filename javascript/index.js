@@ -1,22 +1,23 @@
-// let valor = 0;
-// let contadorExterno = 0;
-// let contadorInterno = 0;
-// let dinero = 0;
-// let dineroApostado = 0;
+let valor = 0;
+let contadorExterno = 0;
+let contadorInterno = 0;
+let dinero = 0;
+let dineroApostado = 0;
 
-// class Jugador{
-//     constructor (nombre, apellido, dinero){
-//         this.nombre = nombre;
-//         this.apellido = apellido;
-//         this.dinero = dinero;
-//     }
-// }
+class Jugador{
+    constructor (nombre, apellido, dinero){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dinero = dinero;
+    }
+}
 
-// const movimientos = [];
-// const jugadores = [];
+const movimientos = [];
+const jugadores = [];
 
 const ingresarNuevoUsuario = ()=> {
     let perfil = document.getElementById("jugador");
+    console.log(perfil)
     let nombre = document.getElementById("nombre").value;
     let apellido = document.getElementById("apellido").value;
     dinero = document.getElementById("dinero").value;
@@ -25,9 +26,24 @@ const ingresarNuevoUsuario = ()=> {
     
     let nuevoJugador = document.createElement("li");
     nuevoJugador.innerHTML = `<h3>${nombre}-${apellido}</h3>
-                        <p>su dinero es: ${dinero}</p>`;
-    perfil.append(nuevoJugador);
+                              <p>su dinero es: ${dinero}</p>`;
+    perfil.appendChild(nuevoJugador);
 }
+let boton = document.getElementById("btn");
+boton.addEventListener("click", ingresarNuevoUsuario);
+// const ingresarNuevoUsuario = ()=> {
+//     let perfil = document.getElementById("jugador");
+//     let nombre = document.getElementById("nombre").value;
+//     let apellido = document.getElementById("apellido").value;
+//     dinero = document.getElementById("dinero").value;
+//     // jugadores.push(new Jugador(nombre, apellido, dinero));
+
+    
+//     let nuevoJugador = document.createElement("li");
+//     nuevoJugador.innerHTML = `<h3>${nombre}-${apellido}</h3>
+//                         <p>su dinero es: ${dinero}</p>`;
+//     perfil.append(nuevoJugador);
+// }
 
  
 // function piedraPapelTijera(){
