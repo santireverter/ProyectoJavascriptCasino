@@ -1,3 +1,5 @@
+///                    inicializaciones globales                   /////////
+
 let valor = 0;
 let contadorExterno = 0;
 let contadorInterno = 0;
@@ -14,10 +16,12 @@ class Jugador{
 
 const movimientos = [];
 const jugadores = [];
+
+let apuesta = document.getElementById("ppt");
+
 /////                      Crear usuario                   ////////////////
 const ingresarNuevoUsuario = ()=> {
     let perfil = document.getElementById("jugador");
-    console.log(perfil)
     let nombre = document.getElementById("nombre").value;
     let apellido = document.getElementById("apellido").value;
     dinero = document.getElementById("dinero").value;
@@ -27,10 +31,17 @@ const ingresarNuevoUsuario = ()=> {
                               <p>su dinero es: ${dinero}</p>`;
     perfil.append(nuevoJugador);
 }
-let boton = document.getElementById("btn");
-boton.addEventListener("click", ingresarNuevoUsuario);
- 
 
+/////                    Botones y event listeners          ///////////////////
+
+let botonUser = document.getElementById("btnUser");
+botonUser.addEventListener("click", ingresarNuevoUsuario);
+
+let botonJuego1 = document.getElementById("btnJuego1");
+botonJuego1.addEventListener("click", piedraPapelTijera);
+ 
+let botonMovimientos = document.getElementById("btnMovimientos");
+botonMovimientos.addEventListener("click", mostrarMovimientos);
 
 //////                   Corroborar apuestas           //////////////////////
 dineroApostado = document.getElementById("dineroApostado");
@@ -39,10 +50,6 @@ if (dineroApostado > dinero){
     otraApuesta.innerHTML = `Usted esta apostando mas de lo que posee`;
     let apuesta = document.getElementById("ppt");
     apuesta.append(otraApuesta);
-}
-
-function piedra(){
-    valor = numeroAleatorio(0,2);
 }
 
 
@@ -58,6 +65,7 @@ function numeroAleatorio(min, max) {
 function calcularGanancia(){
     dinero = dinero + dineroApostado;
     movimientos.push(dineroApostado);
+
 }
 function calcularPerdida(){
     dinero = dinero - dineroApostado;
@@ -78,193 +86,76 @@ function mostrarMovimientos(){
 //////                      Piedra Papel o Tijeras           //////////////////
 
 function piedraPapelTijera(){
-    valor = numeroAleatorio (0, 2);
-    let eleccion = document.querySelector(`input[name=eleccion]:checked`).value;
+    valor = numeroAleatorio(0, 2);
+    let eleccion = +(document.querySelector("input[name=eleccionPPT]:checked").value);
     switch(eleccion){
         case 0:
             if (valor == 0) {
-                alert("La maquina hizo Piedra, hay empate");
+                let resultado = document.createElement("h4");
+                resultado.innerHTML = "La maquina hizo Piedra, hay empate";
+                apuesta.insertBefore(resultado, botonMovimientos);
                 break;
             }
             else if (valor == 1) {
-                alert("La maquina hizo Papel, Usted pierde");
+                let resultado = document.createElement("h4");
+                resultado.innerHTML = "La maquina hizo Papel, Usted pierde";
+                apuesta.insertBefore(resultado, botonMovimientos);
                 calcularPerdida();
                 break;
             }
             else {
-                alert("La maquina hizo Tijera, Usted gana");
+                let resultado = document.createElement("h4");
+                resultado.innerHTML = "La maquina hizo Tijera, Usted gana";
+                apuesta.insertBefore(resultado, botonMovimientos);
                 calcularGanancia();
                 break;
             }
         case 1:
             if (valor == 0) {
-                alert("La maquina hizo Piedra, Usted gana");
+                let resultado = document.createElement("h4");
+                resultado.innerHTML = "La maquina hizo Piedra, Usted gana";
+                apuesta.insertBefore(resultado, botonMovimientos);
                 calcularGanancia();
                 break;
             }
             else if (valor == 1) {
-                alert("La maquina hizo Papel, hay empate");
+                let resultado = document.createElement("h4");
+                resultado.innerHTML = "La maquina hizo Papel, hay empate";
+                apuesta.insertBefore(resultado, botonMovimientos);
                 break;
             }
             else {
-                alert("La maquina hizo Tijera, Usted pierde");
+                let resultado = document.createElement("h4");
+                resultado.innerHTML = "La maquina hizo Tijera, Usted pierde";
+                apuesta.insertBefore(resultado, botonMovimientos);
                 calcularPerdida();
                 break;
             }
         case 2:
             if (valor == 0) {
-                alert("La maquina hizo Piedra, Usted pierde");
+                let resultado = document.createElement("h4");
+                resultado.innerHTML = "La maquina hizo Piedra, Usted pierde";
+                apuesta.insertBefore(resultado, botonMovimientos);
                 calcularPerdida();
-                repetirJuego();
                 break;
             }
             else if (valor == 1) {
-                alert("La maquina hizo Papel, Usted gana");
+                let resultado = document.createElement("h4");
+                resultado.innerHTML = "La maquina hizo Papel, Usted gana";
+                apuesta.insertBefore(resultado, botonMovimientos);
                 calcularGanancia();
-                repetirJuego();
                 break;
             }
             else {
-                alert("La maquina hizo Tijera, hay empate");
-                repetirJuego();
+                let resultado = document.createElement("h4");
+                resultado.innerHTML = "La maquina hizo Tijera, hay empate";
+                apuesta.insertBefore(resultado, botonMovimientos);
                 break;
             }
     }
 }
 
 
-
-
-// function piedraPapelTijera(){
-//     valor = numeroAleatorio(0, 2);
-//     let eleccion = document.getElementById("eleccionPPT").value;
-//     switch (eleccion){
-//         case "Piedra":
-//             if (valor == 0) {
-//                 alert("La maquina hizo Piedra, hay empate");
-//                 repetirJuego();
-//                 break;
-//             }
-//             else if (valor == 1) {
-//                 alert("La maquina hizo Papel, Usted pierde");
-//                 calcularPerdida();
-//                 repetirJuego();
-//                 break;
-//             }
-//             else {
-//                 alert("La maquina hizo Tijera, Usted gana");
-//                 calcularGanancia();
-//                 repetirJuego();
-//                 break;
-//             }
-//         case "Papel":
-//             if (valor == 0) {
-//                 alert("La maquina hizo Piedra, Usted gana");
-//                 calcularGanancia();
-//                 repetirJuego();
-//                 break;
-//             }
-//             else if (valor == 1) {
-//                 alert("La maquina hizo Papel, hay empate");
-//                 repetirJuego();
-//                 break;
-//             }
-//             else {
-//                 alert("La maquina hizo Tijera, Usted pierde");
-//                 calcularPerdida();
-//                 repetirJuego();
-//                 break;
-//             }
-//         case "Tijera":
-//             if (valor == 0) {
-//                 alert("La maquina hizo Piedra, Usted pierde");
-//                 calcularPerdida();
-//                 repetirJuego();
-//                 break;
-//             }
-//             else if (valor == 1) {
-//                 alert("La maquina hizo Papel, Usted gana");
-//                 calcularGanancia(); 
-//                 repetirJuego();
-//                 break;
-//             }
-//             else {
-//                 alert("La maquina hizo Tijera, hay empate");
-//                 repetirJuego();
-//                 break;
-//             }
-//             default:
-//                 alert("Por favor seleccione una opcion");
-//         }
-//     } 
-
-
-
-            // if (dineroApostado <= dinero) {
-            //     //let eleccion = +prompt("Elija 1-Piedra/ 2-Papel/ 3-Tijera");
-            //     valor = numeroAleatorio(0, 2);
-            //     switch (eleccion) {
-            //         case 1:
-            //             if (valor == 0) {
-            //                 alert("La maquina hizo Piedra, hay empate");
-            //                 repetirJuego();
-            //                 break;
-            //             }
-            //             else if (valor == 1) {
-            //                 alert("La maquina hizo Papel, Usted pierde");
-            //                 calcularPerdida();
-            //                 repetirJuego();
-            //                 break;
-            //             }
-            //             else {
-            //                 alert("La maquina hizo Tijera, Usted gana");
-            //                 calcularGanancia();
-            //                 repetirJuego();
-            //                 break;
-            //             }
-            //         case 2:
-            //             if (valor == 0) {
-            //                 alert("La maquina hizo Piedra, Usted gana");
-            //                 calcularGanancia();
-            //                 repetirJuego();
-            //                 break;
-            //             }
-            //             else if (valor == 1) {
-            //                 alert("La maquina hizo Papel, hay empate");
-            //                 repetirJuego();
-            //                 break;
-            //             }
-            //             else {
-            //                 alert("La maquina hizo Tijera, Usted pierde");
-            //                 calcularPerdida();
-            //                 repetirJuego();
-            //                 break;
-            //             }
-            //         case 3:
-            //             if (valor == 0) {
-            //                 alert("La maquina hizo Piedra, Usted pierde");
-            //                 calcularPerdida();
-            //                 repetirJuego();
-            //                 break;
-            //             }
-            //             else if (valor == 1) {
-            //                 alert("La maquina hizo Papel, Usted gana");
-            //                 calcularGanancia(); 
-            //                 repetirJuego();
-            //                 break;
-            //             }
-            //             else {
-            //                 alert("La maquina hizo Tijera, hay empate");
-            //                 repetirJuego();
-            //                 break;
-            //             }
-            //         default:
-            //             alert("Por favor ingrese el numero de la opcion");
-            //     }
-            // }
-            // else {
-            //     alert("Usted esta apostando mas dinero del que posee");
-            // }
 
 
 

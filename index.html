@@ -58,7 +58,7 @@
             <input type="number" placeholder="Ingrese cantidad de dinero" id="dinero" >
         </label>
         <!-- <a id="btn">Ingresar</a> -->
-        <input type="button" value="Ingresar" id="btn">
+        <input type="button" value="Ingresar" id="btnUser">
     </form>
     <div class="contenedor">
         <a href="">
@@ -84,17 +84,18 @@
             <input type="number" placeholder="Ingrese monto" id="dineroApostado">
         </label>
         <h3>Elija Piedra, Papel o Tijera</h3>
-        <label for="eleccion">
-            <input type="radio" value="0" name="eleccion" id="Piedra">Piedra
+        <label for="eleccionPPT">
+            <input type="radio" value="0" name="eleccionPPT" id="Piedra">Piedra
         </label>
         <label for="">
-            <input type="radio" value="1" name="eleccion" id="Papel">Papel
+            <input type="radio" value="1" name="eleccionPPT" id="Papel">Papel
         </label>
         <label for="">
-            <input type="radio" value="2" name="eleccion" id="Tijera">Tijera
+            <input type="radio" value="2"name="eleccionPPT" id="Tijera">Tijera
         </label>
-        <button onclick="piedraPapelTijera()"></button>
+        <input type="button" value="Jugar" id="btnJuego1">
         <h4>El resultado es...</h4>
+        <input type="button" value="Mostrar movimientos" id="btnMovimientos">
     </div>
  <script src="../javascript/index.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" 
