@@ -45,10 +45,6 @@
     </header>
     <div>
         <ul id="jugador">
-            <li>
-                <h3>lucky</h3>
-                <p>dinero mucho</p>
-            </li>
         </ul>
     </div>
     <form action="">
@@ -82,20 +78,20 @@
             </div>
         </a>
     </div>
-    <div class="ppt">
+    <div class="ppt" id="ppt">
         <h3>Ingrese monton a apostar</h3>
         <label for="">
-            <input type="number" placeholder="Ingrese monto">
+            <input type="number" placeholder="Ingrese monto" id="dineroApostado">
         </label>
         <h3>Elija Piedra, Papel o Tijera</h3>
-        <label for="">
-            <input type="radio" value="Piedra" name="eleccion" id="Piedra">Piedra
+        <label for="eleccion">
+            <input type="radio" value="0" name="eleccion" id="Piedra">Piedra
         </label>
         <label for="">
-            <input type="radio" value="Papel" name="eleccion" id="Papel">Papel
+            <input type="radio" value="1" name="eleccion" id="Papel">Papel
         </label>
         <label for="">
-            <input type="radio" value="Tijera" name="eleccion" id="Tijera">Tijera
+            <input type="radio" value="2" name="eleccion" id="Tijera">Tijera
         </label>
         <button onclick="piedraPapelTijera()"></button>
         <h4>El resultado es...</h4>
