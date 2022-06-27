@@ -26,7 +26,7 @@ const ingresarNuevoUsuario = () => {
     let perfil = document.getElementById("jugador");
     let nombre = document.getElementById("nombre").value;
     let apellido = document.getElementById("apellido").value;
-    dinero = document.getElementById("dinero").value;
+    dinero = parseInt(document.getElementById("dinero").value);
     jugadores.push(new Jugador(nombre, apellido, dinero));
     let nuevoJugador = document.createElement("li");
     nuevoJugador.innerHTML = `<h3>${nombre} ${apellido}</h3>
@@ -56,17 +56,16 @@ botonMovimientos.addEventListener("click", mostrarMovimientos);
 
 
 function corroborarApuestas() {
-    dineroApostado = document.getElementById("dineroApostado");
+    dineroApostado = parseInt(document.getElementById("dineroApostado").value);
+    contadorInterno = 0;
     if (dineroApostado <= dinero) {
-        return (true);
+        contadorInterno++;
     }
     else {
         let otraApuesta = document.createElement("h4");
         otraApuesta.innerHTML = `Usted esta apostando mas de lo que posee`;
         let apuesta = document.getElementById("ppt");
         apuesta.append(otraApuesta);
-        console.log(dinero);
-        return (false);
     }
 }
 
@@ -86,7 +85,6 @@ function numeroAleatorio(min, max) {
 function calcularGanancia() {
     dinero = dinero + dineroApostado;
     movimientos.push(dineroApostado);
-
 }
 function calcularPerdida() {
     dinero = dinero - dineroApostado;
@@ -99,13 +97,11 @@ function calcularPerdida() {
 
 
 function mostrarMovimientos() {
-    let mostrar = +prompt("desea ver sus movimientos? 1- SI / 2- NO");
-    if (mostrar == 1) {
+        alert(dinero);
         for (let i = 0; i < movimientos.length; i++) {
             alert(movimientos[i]);
         }
     }
-}
 
 
 
@@ -113,7 +109,7 @@ function mostrarMovimientos() {
 
 function piedraPapelTijera() {
     valor = numeroAleatorio(0, 2);
-    if (corroborarApuestas == true) {
+    if (contadorInterno != 0) {
         let eleccion = +(document.querySelector("input[name=eleccionPPT]:checked").value);
         switch (eleccion) {
             case 0:
