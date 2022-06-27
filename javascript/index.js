@@ -39,17 +39,20 @@ botonUser.addEventListener("click", ingresarNuevoUsuario);
 
 let botonJuego1 = document.getElementById("btnJuego1");
 botonJuego1.addEventListener("click", piedraPapelTijera);
+botonJuego1.addEventListener("click", corroborarApuestas)
  
 let botonMovimientos = document.getElementById("btnMovimientos");
 botonMovimientos.addEventListener("click", mostrarMovimientos);
 
 //////                   Corroborar apuestas           //////////////////////
-dineroApostado = document.getElementById("dineroApostado");
-if (dineroApostado > dinero){
-    let otraApuesta = document.createElement("h4");
-    otraApuesta.innerHTML = `Usted esta apostando mas de lo que posee`;
-    let apuesta = document.getElementById("ppt");
-    apuesta.append(otraApuesta);
+function corroborarApuestas() {
+    dineroApostado = document.getElementById("dineroApostado");
+    if (dineroApostado > dinero) {
+        let otraApuesta = document.createElement("h4");
+        otraApuesta.innerHTML = `Usted esta apostando mas de lo que posee`;
+        let apuesta = document.getElementById("ppt");
+        apuesta.append(otraApuesta);
+    }
 }
 
 
