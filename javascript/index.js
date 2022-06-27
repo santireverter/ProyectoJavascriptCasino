@@ -6,8 +6,8 @@ let contadorInterno = 0;
 let dinero = 0;
 let dineroApostado = 0;
 
-class Jugador{
-    constructor (nombre, apellido, dinero){
+class Jugador {
+    constructor(nombre, apellido, dinero) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dinero = dinero;
@@ -20,7 +20,9 @@ const jugadores = [];
 let apuesta = document.getElementById("ppt");
 
 /////                      Crear usuario                   ////////////////
-const ingresarNuevoUsuario = ()=> {
+
+
+const ingresarNuevoUsuario = () => {
     let perfil = document.getElementById("jugador");
     let nombre = document.getElementById("nombre").value;
     let apellido = document.getElementById("apellido").value;
@@ -32,129 +34,152 @@ const ingresarNuevoUsuario = ()=> {
     perfil.append(nuevoJugador);
 }
 
+
+
 /////                    Botones y event listeners          ///////////////////
+
+
 
 let botonUser = document.getElementById("btnUser");
 botonUser.addEventListener("click", ingresarNuevoUsuario);
 
 let botonJuego1 = document.getElementById("btnJuego1");
+botonJuego1.addEventListener("click", corroborarApuestas);
 botonJuego1.addEventListener("click", piedraPapelTijera);
-botonJuego1.addEventListener("click", corroborarApuestas)
- 
+
 let botonMovimientos = document.getElementById("btnMovimientos");
 botonMovimientos.addEventListener("click", mostrarMovimientos);
 
+
+
 //////                   Corroborar apuestas           //////////////////////
+
+
 function corroborarApuestas() {
     dineroApostado = document.getElementById("dineroApostado");
-    if (dineroApostado > dinero) {
+    if (dineroApostado <= dinero) {
+        return (true);
+    }
+    else {
         let otraApuesta = document.createElement("h4");
         otraApuesta.innerHTML = `Usted esta apostando mas de lo que posee`;
         let apuesta = document.getElementById("ppt");
         apuesta.append(otraApuesta);
+        console.log(dinero);
+        return (false);
     }
 }
 
 
 //////                  Funcion generadora de numeros aleatorios                  /////////////////
 
-function numeroAleatorio(min, max) { 
+
+function numeroAleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 
 /////                     Calcular Ganancia y Perdida                     ///////////////////
 
-function calcularGanancia(){
+
+
+function calcularGanancia() {
     dinero = dinero + dineroApostado;
     movimientos.push(dineroApostado);
 
 }
-function calcularPerdida(){
+function calcularPerdida() {
     dinero = dinero - dineroApostado;
     movimientos.push(-dineroApostado);
 }
 
+
 /////////                Mostrar Movimientos             ///////////////////
 
-function mostrarMovimientos(){
+
+
+function mostrarMovimientos() {
     let mostrar = +prompt("desea ver sus movimientos? 1- SI / 2- NO");
-    if(mostrar == 1){
-        for (let i = 0; i < movimientos.length; i++){
+    if (mostrar == 1) {
+        for (let i = 0; i < movimientos.length; i++) {
             alert(movimientos[i]);
         }
     }
 }
 
+
+
 //////                      Piedra Papel o Tijeras           //////////////////
 
-function piedraPapelTijera(){
+function piedraPapelTijera() {
     valor = numeroAleatorio(0, 2);
-    let eleccion = +(document.querySelector("input[name=eleccionPPT]:checked").value);
-    switch(eleccion){
-        case 0:
-            if (valor == 0) {
-                let resultado = document.createElement("h4");
-                resultado.innerHTML = "La maquina hizo Piedra, hay empate";
-                apuesta.insertBefore(resultado, botonMovimientos);
-                break;
-            }
-            else if (valor == 1) {
-                let resultado = document.createElement("h4");
-                resultado.innerHTML = "La maquina hizo Papel, Usted pierde";
-                apuesta.insertBefore(resultado, botonMovimientos);
-                calcularPerdida();
-                break;
-            }
-            else {
-                let resultado = document.createElement("h4");
-                resultado.innerHTML = "La maquina hizo Tijera, Usted gana";
-                apuesta.insertBefore(resultado, botonMovimientos);
-                calcularGanancia();
-                break;
-            }
-        case 1:
-            if (valor == 0) {
-                let resultado = document.createElement("h4");
-                resultado.innerHTML = "La maquina hizo Piedra, Usted gana";
-                apuesta.insertBefore(resultado, botonMovimientos);
-                calcularGanancia();
-                break;
-            }
-            else if (valor == 1) {
-                let resultado = document.createElement("h4");
-                resultado.innerHTML = "La maquina hizo Papel, hay empate";
-                apuesta.insertBefore(resultado, botonMovimientos);
-                break;
-            }
-            else {
-                let resultado = document.createElement("h4");
-                resultado.innerHTML = "La maquina hizo Tijera, Usted pierde";
-                apuesta.insertBefore(resultado, botonMovimientos);
-                calcularPerdida();
-                break;
-            }
-        case 2:
-            if (valor == 0) {
-                let resultado = document.createElement("h4");
-                resultado.innerHTML = "La maquina hizo Piedra, Usted pierde";
-                apuesta.insertBefore(resultado, botonMovimientos);
-                calcularPerdida();
-                break;
-            }
-            else if (valor == 1) {
-                let resultado = document.createElement("h4");
-                resultado.innerHTML = "La maquina hizo Papel, Usted gana";
-                apuesta.insertBefore(resultado, botonMovimientos);
-                calcularGanancia();
-                break;
-            }
-            else {
-                let resultado = document.createElement("h4");
-                resultado.innerHTML = "La maquina hizo Tijera, hay empate";
-                apuesta.insertBefore(resultado, botonMovimientos);
-                break;
-            }
+    if (corroborarApuestas == true) {
+        let eleccion = +(document.querySelector("input[name=eleccionPPT]:checked").value);
+        switch (eleccion) {
+            case 0:
+                if (valor == 0) {
+                    let resultado = document.createElement("h4");
+                    resultado.innerHTML = "La maquina hizo Piedra, hay empate";
+                    apuesta.insertBefore(resultado, botonMovimientos);
+                    break;
+                }
+                else if (valor == 1) {
+                    let resultado = document.createElement("h4");
+                    resultado.innerHTML = "La maquina hizo Papel, Usted pierde";
+                    apuesta.insertBefore(resultado, botonMovimientos);
+                    calcularPerdida();
+                    break;
+                }
+                else {
+                    let resultado = document.createElement("h4");
+                    resultado.innerHTML = "La maquina hizo Tijera, Usted gana";
+                    apuesta.insertBefore(resultado, botonMovimientos);
+                    calcularGanancia();
+                    break;
+                }
+            case 1:
+                if (valor == 0) {
+                    let resultado = document.createElement("h4");
+                    resultado.innerHTML = "La maquina hizo Piedra, Usted gana";
+                    apuesta.insertBefore(resultado, botonMovimientos);
+                    calcularGanancia();
+                    break;
+                }
+                else if (valor == 1) {
+                    let resultado = document.createElement("h4");
+                    resultado.innerHTML = "La maquina hizo Papel, hay empate";
+                    apuesta.insertBefore(resultado, botonMovimientos);
+                    break;
+                }
+                else {
+                    let resultado = document.createElement("h4");
+                    resultado.innerHTML = "La maquina hizo Tijera, Usted pierde";
+                    apuesta.insertBefore(resultado, botonMovimientos);
+                    calcularPerdida();
+                    break;
+                }
+            case 2:
+                if (valor == 0) {
+                    let resultado = document.createElement("h4");
+                    resultado.innerHTML = "La maquina hizo Piedra, Usted pierde";
+                    apuesta.insertBefore(resultado, botonMovimientos);
+                    calcularPerdida();
+                    break;
+                }
+                else if (valor == 1) {
+                    let resultado = document.createElement("h4");
+                    resultado.innerHTML = "La maquina hizo Papel, Usted gana";
+                    apuesta.insertBefore(resultado, botonMovimientos);
+                    calcularGanancia();
+                    break;
+                }
+                else {
+                    let resultado = document.createElement("h4");
+                    resultado.innerHTML = "La maquina hizo Tijera, hay empate";
+                    apuesta.insertBefore(resultado, botonMovimientos);
+                    break;
+                }
+        }
     }
 }
 
