@@ -50,6 +50,10 @@ botonJuego1.addEventListener("click", piedraPapelTijera);
 let botonMovimientos = document.getElementById("btnMovimientos");
 botonMovimientos.addEventListener("click", mostrarMovimientos);
 
+let botonJuego2 = document.getElementById("btnJuego2");
+botonJuego2.addEventListener("click", corroborarApuestas);
+botonJuego2.addEventListener("click", caraOCruz);
+
 
 
 //////                   Corroborar apuestas           //////////////////////
@@ -180,6 +184,35 @@ function piedraPapelTijera() {
 }
 
 
+
+////////                  Cara o Cruz                   ////////////////////
+
+function caraOCruz(){
+    valor = numeroAleatorio(0, 1);
+    if(contadorInterno != 0){
+        let eleccion = +(document.querySelector("input[name=eleccionCOC]:checked").value);
+        if(valor == 0 && eleccion == 0){
+            let resultado = document.createElement("h4");
+                resultado.innerHTML = "Salio cara, Usted gana";
+                apuesta.insertBefore(resultado, botonMovimientos);
+        }
+        else if(valor == 0 && eleccion == 1){
+            let resultado = document.createElement("h4");
+                resultado.innerHTML = "Salio cruz, Usted pierde";
+                apuesta.insertBefore(resultado, botonMovimientos);
+        }
+        else if(valor == 1 && eleccion == 0){
+            let resultado = document.createElement("h4");
+                resultado.innerHTML = "Salio cara, Usted pierde";
+                apuesta.insertBefore(resultado, botonMovimientos);
+        }
+        else{
+            let resultado = document.createElement("h4");
+                resultado.innerHTML = "Salio cruz, Usted gana";
+                apuesta.insertBefore(resultado, botonMovimientos);
+        }
+    }
+}
 
 
 
