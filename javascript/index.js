@@ -17,7 +17,6 @@ class Jugador {
 const movimientos = [];
 const jugadores = [];
 
-let apuesta = document.getElementById("ppt");
 
 /////                      Crear usuario                   ////////////////
 
@@ -32,6 +31,9 @@ const ingresarNuevoUsuario = () => {
     nuevoJugador.innerHTML = `<h3>${nombre} ${apellido}</h3>
                               <p>su dinero es: ${dinero}</p>`;
     perfil.append(nuevoJugador);
+    localStorage.setItem("name", nombre);
+    localStorage.setItem("surname", apellido);
+    localStorage.setItem("money", dinero);
 }
 
 
@@ -101,9 +103,15 @@ function calcularPerdida() {
 
 
 function mostrarMovimientos() {
-        alert(dinero);
+        let dineroActual = document.createElement("h3");
+        dineroActual.innerHTML = `Su dinero actual es ${dinero}
+                                <h3>Sus movimientos son los siguientes: </h3>`                                    ;
+        let lista = document.getElementById("movimientos");
+        lista.appendChild(dineroActual)
         for (let i = 0; i < movimientos.length; i++) {
-            alert(movimientos[i]);
+            let movimientosDinero = document.createElement("li");
+            movimientosDinero.innerHTML = `${movimientos[i]}`
+            lista.appendChild(movimientosDinero);
         }
     }
 
@@ -113,6 +121,7 @@ function mostrarMovimientos() {
 
 function piedraPapelTijera() {
     valor = numeroAleatorio(0, 2);
+    let apuesta = document.getElementById("ppt");
     if (contadorInterno != 0) {
         let eleccion = +(document.querySelector("input[name=eleccionPPT]:checked").value);
         switch (eleccion) {
@@ -194,91 +203,29 @@ function caraOCruz(){
         if(valor == 0 && eleccion == 0){
             let resultado = document.createElement("h4");
                 resultado.innerHTML = "Salio cara, Usted gana";
-                apuesta.insertBefore(resultado, botonMovimientos);
+                document.getElementById("caraOCruz").appendChild(resultado);
+                calcularGanancia();
         }
         else if(valor == 0 && eleccion == 1){
             let resultado = document.createElement("h4");
                 resultado.innerHTML = "Salio cruz, Usted pierde";
-                apuesta.insertBefore(resultado, botonMovimientos);
+                document.getElementById("caraOCruz").appendChild(resultado);
+                calcularPerdida();
         }
         else if(valor == 1 && eleccion == 0){
             let resultado = document.createElement("h4");
                 resultado.innerHTML = "Salio cara, Usted pierde";
-                apuesta.insertBefore(resultado, botonMovimientos);
+                document.getElementById("caraOCruz").appendChild(resultado);
+                calcularPerdida();
         }
         else{
             let resultado = document.createElement("h4");
                 resultado.innerHTML = "Salio cruz, Usted gana";
-                apuesta.insertBefore(resultado, botonMovimientos);
+                document.getElementById("caraOCruz").appendChild(resultado);
+                calcularGanancia();
         }
     }
 }
-
-
-
-//          {
-//             contadorInterno = 0;
-//             dineroApostado = +prompt("Cuanto desea apostar?")
-//             if (dineroApostado <= dinero) {
-//                 let eleccion = +prompt("Elija 1-Cara/ 2-Cruz")
-//                 valor = numeroAleatorio(1, 2);
-//                 if (valor == 1 && eleccion == 1) {
-//                     alert("se tira la moneda y el resultado es...");
-//                     alert("Salio cara, Usted gana");
-//                     calcularGanancia();
-//                     repetirJuego();
-//                 }
-//                 else if (valor == 1 && eleccion == 2) {
-//                     alert("se tira la moneda y el resultado es...");
-//                     alert("Salio cara, Usted pierde");
-//                     calcularPerdida();
-//                     repetirJuego();
-//                 }
-//                 else if (valor == 2 && eleccion == 1) {
-//                     alert("se tira la moneda y el resultado es...");
-//                     alert("Salio cruz, Usted pierde");
-//                     calcularPerdida();
-//                     repetirJuego();
-//                 }
-//                 else if (valor == 2 && eleccion == 2) {
-//                     alert("se tira la moneda y el resultado es...");
-//                     alert("Salio cruz, Usted gana");
-//                     calcularGanancia();
-//                     repetirJuego();
-//                 }
-//                 else {
-//                     alert("Por favor ingrese un numero valido de entre las opciones");
-//                 }
-//             }
-//             else {
-//                 alert("Usted esta apostando mas dinero del que posee");
-//             }
-//         }
-//          (contadorInterno == 0)
-
-
-//         alert("Por favor ingrese un numero valido de entre las opciones");
-
-//     mostrarMovimientos();
-//     continuaJugando();
-
-// while (contadorExterno == 0)
-
-
-
-// function continuaJugando() {
-//     let continua = +prompt("Desea continuar jugando? 1- SI / 2-NO");
-//     if (continua == 2) {
-//         return contadorExterno++;
-//     }
-// }
-
-// function repetirJuego() {
-//     let repite = +prompt("Desea repetir? 1-SI / 2-NO");
-//     if (repite == 2) {
-//         return contadorInterno++;
-//     }
-// }
 
 
 
