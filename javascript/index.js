@@ -64,15 +64,14 @@ botonJuego2.addEventListener("click", caraOCruz);
 function corroborarApuestas() {
     dineroApostado = parseInt(document.getElementById("dineroApostado").value);
     contadorInterno = 0;
-    if (dineroApostado <= dinero) {
-        contadorInterno++;
-    }
-    else {
-        let otraApuesta = document.createElement("h4");
-        otraApuesta.innerHTML = `Usted esta apostando mas de lo que posee`;
-        let apuesta = document.getElementById("ppt");
-        apuesta.append(otraApuesta);
-    }
+    dineroApostado <= dinero ? contadorInterno++ : apuestaExcedida();
+}
+
+function apuestaExcedida (){
+    let otraApuesta = document.createElement("h4");
+    otraApuesta.innerHTML = `Usted esta apostando mas de lo que posee`;
+    let apuesta = document.getElementById("ppt");
+    apuesta.append(otraApuesta); 
 }
 
 
@@ -98,13 +97,22 @@ function calcularPerdida() {
 }
 
 
+/////////                    Calcular Ganancias o perdidas totales     //////////////    
+
+function calcularTotal(...movimientos){
+    return movimientos.reduce((acc, n) => acc + n, 0)
+}
+
+
+
 /////////                Mostrar Movimientos             ///////////////////
 
 
 
 function mostrarMovimientos() {
+        let gananciasDelDia = calcularTotal(...movimientos);
         let dineroActual = document.createElement("h3");
-        dineroActual.innerHTML = `Su dinero actual es ${dinero}
+        dineroActual.innerHTML = `Su dinero actual es ${dinero} y sus ganancias de hoy son ${gananciasDelDia}
                                 <h3>Sus movimientos son los siguientes: </h3>`                                    ;
         let lista = document.getElementById("movimientos");
         lista.appendChild(dineroActual)
@@ -114,7 +122,6 @@ function mostrarMovimientos() {
             lista.appendChild(movimientosDinero);
         }
     }
-
 
 
 //////                      Piedra Papel o Tijeras           //////////////////
