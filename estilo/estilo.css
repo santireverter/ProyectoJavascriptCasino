@@ -4,6 +4,10 @@
     margin: 0;
     padding: 0; }
 
+body{
+    margin: 0 50px;
+}
+
 .contenedorJuegos{
     background-color: #11131a;
     width: 300px;

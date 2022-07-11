@@ -46,6 +46,7 @@ let botonUser = document.getElementById("btnUser");
 botonUser.addEventListener("click", ingresarNuevoUsuario);
 
 let botonJuego1 = document.getElementById("btnJuego1");
+botonJuego1.addEventListener("click", corroborarLogIn);
 botonJuego1.addEventListener("click", corroborarApuestas);
 botonJuego1.addEventListener("click", piedraPapelTijera);
 
@@ -53,6 +54,7 @@ let botonMovimientos = document.getElementById("btnMovimientos");
 botonMovimientos.addEventListener("click", mostrarMovimientos);
 
 let botonJuego2 = document.getElementById("btnJuego2");
+botonJuego2.addEventListener("click", corroborarLogIn);
 botonJuego2.addEventListener("click", corroborarApuestas);
 botonJuego2.addEventListener("click", caraOCruz);
 
@@ -64,8 +66,28 @@ botonJuego2.addEventListener("click", caraOCruz);
 function corroborarApuestas() {
     dineroApostado = parseInt(document.getElementById("dineroApostado").value);
     contadorInterno = 0;
-    dineroApostado <= dinero ? contadorInterno++ : apuestaExcedida();
+    console.log(contadorExterno)
+    if(contadorExterno >= 1){
+    if (dineroApostado <= dinero && dineroApostado != 0){
+        contadorInterno++;
+        console.log(dineroApostado)
+    }
+    else if (dineroApostado == 0 || dineroApostado == NaN){
+        swal({
+            title: 'Error',
+            text: 'Ingrese un monto para apostar',
+            icon: 'error',
+            Button: 'OK'
+        });
+        console.log(dineroApostado);
+    }
+    else{
+        apuestaExcedida();
+        console.log(dineroApostado)
+    }
+    }
 }
+
 
 function apuestaExcedida (){
     let otraApuesta = document.createElement("h4");
@@ -235,7 +257,22 @@ function caraOCruz(){
 }
 
 
+////////////////                   Corroborar que se hayan loggeado   //////////////////////
 
+
+function corroborarLogIn(){
+    if (nombre == "" || apellido == "" || dinero == "") {
+        swal({
+            title: 'No se ha loggeado',
+            text: 'Por favor haga click en el boton de Ingresar de mas arriba para loggearse',
+            button: 'Continuar',
+            icon: "warning",
+        })
+    }
+    else{
+        contadorExterno++;
+    }
+}
 
 
 
