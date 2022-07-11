@@ -67,34 +67,36 @@ function corroborarApuestas() {
     dineroApostado = parseInt(document.getElementById("dineroApostado").value);
     contadorInterno = 0;
     console.log(contadorExterno)
-    if(contadorExterno >= 1){
-    if (dineroApostado <= dinero && dineroApostado != 0){
-        contadorInterno++;
-        console.log(dineroApostado)
-    }
-    else if (dineroApostado == 0 || dineroApostado == NaN){
-        swal({
-            title: 'Error',
-            text: 'Ingrese un monto para apostar',
-            icon: 'error',
-            Button: 'OK'
-        });
-        console.log(dineroApostado);
-    }
-    else{
-        apuestaExcedida();
-        console.log(dineroApostado)
-    }
+    if (contadorExterno >= 1) {
+        if (dineroApostado <= dinero && dineroApostado != 0) {
+            contadorInterno++;
+        }
+        else if (dineroApostado == 0 || dineroApostado == NaN) {
+            swal({
+                title: 'Error',
+                text: 'Ingrese un monto para apostar',
+                icon: 'error',
+                Button: 'OK'
+            });
+        }
+        else {
+            swal({
+                title: 'Error',
+                text: 'Esta apostando mas de lo que posee',
+                icon: 'warning',
+                button: 'OK'
+            })
+        }
     }
 }
 
 
-function apuestaExcedida (){
-    let otraApuesta = document.createElement("h4");
-    otraApuesta.innerHTML = `Usted esta apostando mas de lo que posee`;
-    let apuesta = document.getElementById("ppt");
-    apuesta.append(otraApuesta); 
-}
+// function apuestaExcedida (){
+//     let otraApuesta = document.createElement("h4");
+//     otraApuesta.innerHTML = `Usted esta apostando mas de lo que posee`;
+//     let apuesta = document.getElementById("ppt");
+//     apuesta.append(otraApuesta); 
+// }
 
 
 //////                  Funcion generadora de numeros aleatorios                  /////////////////
