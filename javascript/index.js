@@ -148,6 +148,35 @@ function mostrarMovimientos() {
     }
 
 
+//////////                Top players          /////////////////////////
+fetch('./ajax/data.json')
+    .then( (res) => res.json())
+    .then( (data) => {
+        data.forEach((jugador) => {
+            const li = document.createElement('li')
+            li.innerHTML = `
+                <h3>Lista de Top Players</h3>
+                <h4>${jugador.nombre} ${jugador.apellido}</h4>
+                <p>Su dinero maximo fue: ${jugador.dinero}</p>
+            `
+            let lista = document.getElementById("jugador");
+            lista.append(li)
+        })
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //////                      Piedra Papel o Tijeras           //////////////////
 
 function piedraPapelTijera() {
