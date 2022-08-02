@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Simulador de Casino</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -30,20 +30,23 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Juegos
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Piedra, papel o tijera</a></li>
-                                <li><a class="dropdown-item" href="#">Cara o Cruz</a></li>
+                            <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#juegos">Piedra, papel o tijera</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#juegos">Cara o Cruz</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Tienda</a>
+                            <a class="nav-link disabled" href="#">Tienda</a>
                         </li>
                     </ul>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+                    aria-controls="offcanvasExample" id="usuario">Registrar Usuario</button>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="px-4 py-5 my-5 text-center">
+    <div class="text-center frontPage">
         <h1 class="display-5 fw-bold">Simulador de Casino</h1>
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">Juega algunos de tus juegos favoritos en este Simulador de Casino, de manera completamente
@@ -56,10 +59,6 @@
                 </button>
             </div>
         </div>
-    </div>
-    <div>
-        <ul id="jugador">
-        </ul>
     </div>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
@@ -92,55 +91,68 @@
 
 
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <a href="">
+        <!-- <a href=""> -->
             <div class="contenedorJuegos">
                 <h3>Piedra Papel o Tijera</h3>
                 <div class="circulo1"></div>
             </div>
-        </a>
-        <a href="">
+        <!-- </a> -->
+        <!-- <a href=""> -->
             <div class="contenedorJuegos">
                 <h3>Cara o Cruz</h3>
                 <div class="circulo2"></div>
             </div>
-        </a>
+        <!-- </a> -->
     </div>
-
-    <div class="ppt" id="ppt">
-        <h3>Ingrese monton a apostar</h3>
-        <label for="">
-            <input type="number" placeholder="Ingrese monto" id="dineroApostado" required>
-        </label>
-        <br>
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="eleccionPPT" id="Piedra" autocomplete="off" value="0" checked>
-            <label class="btn btn-outline-primary" for="Piedra">Piedra</label>
-          
-            <input type="radio" class="btn-check" name="eleccionPPT" id="Papel" autocomplete="off" value="1">
-            <label class="btn btn-outline-primary" for="Papel">Papel</label>
-          
-            <input type="radio" class="btn-check" name="eleccionPPT" id="Tijera" autocomplete="off" value="2">
-            <label class="btn btn-outline-primary" for="Tijera">Tijera</label>
+    <div class="juegos" id="juegos">
+        <div class="apuesta">
+            <h3>Ingrese monto a apostar</h3>
+            <label for="">
+                <input type="number" placeholder="Ingrese monto" id="dineroApostado" class="dineroApostado">
+            </label>
         </div>
-        <input class="btn btn-success" type="button" value="Jugar" id="btnJuego1">
-        <h4>El resultado es...</h4>
-        <input type="button" value="Mostrar movimientos" id="btnMovimientos">
-    </div>
-    <div class="caraOCruz" id="caraOCruz">
-        <!-- <h3>Ingrese monton a apostar</h3>
-        <label for="">
-            <input type="number" placeholder="Ingrese monto" id="dineroApostado">
-        </label> -->
-        <h3>Cara o Cruz</h3>
-        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="eleccionCOC" id="Cara" autocomplete="off" value="0" checked>
-            <label class="btn btn-outline-primary" for="Cara">Cara</label>
-          
-            <input type="radio" class="btn-check" name="eleccionCOC" id="Cruz" autocomplete="off" value="1">
-            <label class="btn btn-outline-primary" for="Cruz">Cruz</label>
+        <div class="orden">
+            <div class="ppt" id="ppt">
+                <br>
+                <h3>Piedra Papel o Tijeras</h3>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="eleccionPPT" id="Piedra" autocomplete="off" value="0"
+                        checked>
+                    <label class="btn btn-outline-primary" for="Piedra">Piedra</label>
+    
+                    <input type="radio" class="btn-check" name="eleccionPPT" id="Papel" autocomplete="off" value="1">
+                    <label class="btn btn-outline-primary" for="Papel">Papel</label>
+    
+                    <input type="radio" class="btn-check" name="eleccionPPT" id="Tijera" autocomplete="off" value="2">
+                    <label class="btn btn-outline-primary" for="Tijera">Tijera</label>
+                </div>
+                <input class="btn btn-success" type="button" value="Jugar" id="btnJuego1">
+                <h4>El resultado es...</h4>
+                <h4 id="resultadoPPT"></h4>
+            </div>
+    
+    
+            <div class="caraOCruz" id="caraOCruz">
+                <br>
+                <h3>Cara o Cruz</h3>
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check" name="eleccionCOC" id="Cara" autocomplete="off" value="0" checked>
+                    <label class="btn btn-outline-primary" for="Cara">Cara</label>
+    
+                    <input type="radio" class="btn-check" name="eleccionCOC" id="Cruz" autocomplete="off" value="1">
+                    <label class="btn btn-outline-primary" for="Cruz">Cruz</label>
+                </div>
+                <input class="btn btn-success" type="button" value="Jugar" id="btnJuego2">
+                <h4>El resultado es...</h4>
+                <h4 id="resultadoCOC"></h4>
+            </div>
         </div>
-        <input class="btn btn-success" type="button" value="Jugar" id="btnJuego2">
-        <h4>El resultado es...</h4>
+        <div class="verMovimientos">
+            <h3>Para ver sus movimientos y saldo Pulse el boton</h3>
+            <input type="button" value="Mostrar movimientos" id="btnMovimientos">
+        </div>
+    
+    
     </div>
     <div class="movimientos" id="movimientos">
         <ul>

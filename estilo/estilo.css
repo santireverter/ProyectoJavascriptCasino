@@ -6,6 +6,7 @@
 
 body{
     margin: 0 50px;
+    background-color: rgb(252, 242, 229);
 }
 
 .contenedorJuegos{
@@ -49,4 +50,52 @@ header{
 .jugador{
     height: 200px;
     width: 200px;
+}
+.juegos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border:solid rgba(59, 59, 59, 0.473);
+    border-radius: 3rem;
+}
+.ppt{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 75px;
+    width: 400px;
+    text-align: center;
+}
+.caraOCruz{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 0 75px;
+    width: 400px;
+    text-align: center;
+}
+.frontPage{
+    margin-top: 8rem!important;
+}
+.apuesta{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+.orden{
+    display: flex;
+}
+.verMovimientos{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+    margin: 30px;
+}
+.swal-overlay{
+    background-color: rgba(0, 0, 0, 0.356);
 }

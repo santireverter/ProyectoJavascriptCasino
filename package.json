@@ -1,0 +1,22 @@
+{
+  "name": "simulador-casino",
+  "version": "1.0.0",
+  "description": "pagina web que simula dos juegos de azar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/santireverter/ProyectoJavascript.git"
+  },
+  "keywords": [
+    "simulador"
+  ],
+  "author": "Santiago Reverter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/santireverter/ProyectoJavascript/issues"
+  },
+  "homepage": "https://github.com/santireverter/ProyectoJavascript#readme"
+}
