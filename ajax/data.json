@@ -1,7 +1,7 @@
 [
-    {"nombre": "Santiago", "apellido": "Reverter", "dinero": 15000, "id": 1},
-    {"nombre": "Mariano","apellido": "Reverter", "dinero": 16000, "id": 2},
-    {"nombre": "Belen","apellido": "Reverter", "dinero": 18500, "id": 3},
-    {"nombre": "Myrian","apellido": "Brizuela", "dinero": 20000, "id": 4},
-    {"nombre": "Alfredo","apellido": "Reverter", "dinero": 21000, "id": 5}
+    {"nombre": "Santiago", "apellido": "Perez", "dinero": 15000, "id": 1},
+    {"nombre": "Mariano","apellido": "Gomez", "dinero": 16000, "id": 2},
+    {"nombre": "Belen","apellido": "Abad", "dinero": 18500, "id": 3},
+    {"nombre": "Myrian","apellido": "Rodriguez", "dinero": 20000, "id": 4},
+    {"nombre": "Alfredo","apellido": "Ramon", "dinero": 21000, "id": 5}
 ]

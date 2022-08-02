@@ -28,8 +28,7 @@ const ingresarNuevoUsuario = () => {
     dinero = parseInt(document.getElementById("dinero").value);
     jugadores.push(new Jugador(nombre, apellido, dinero));
     let nuevoJugador = document.getElementById("usuario");
-    nuevoJugador.innerHTML = `${nombre} ${apellido}
-                              Dinero a apostar ${dinero}  `
+    nuevoJugador.innerHTML = `Dinero Ingresado ${dinero}`
     // let nuevoJugador = document.createElement("li");
     // nuevoJugador.innerHTML = `<h3>${nombre} ${apellido}</h3>
     //                           <p>su dinero es: ${dinero}</p>`;
@@ -54,6 +53,7 @@ botonJuego1.addEventListener("click", corroborarApuestas);
 botonJuego1.addEventListener("click", piedraPapelTijera);
 
 let botonMovimientos = document.getElementById("btnMovimientos");
+botonMovimientos.addEventListener("click", limpiarListaMovimientos);
 botonMovimientos.addEventListener("click", mostrarMovimientos);
 
 let botonJuego2 = document.getElementById("btnJuego2");
@@ -93,12 +93,6 @@ function corroborarApuestas() {
 }
 
 
-// function apuestaExcedida (){
-//     let otraApuesta = document.createElement("h4");
-//     otraApuesta.innerHTML = `Usted esta apostando mas de lo que posee`;
-//     let apuesta = document.getElementById("ppt");
-//     apuesta.append(otraApuesta); 
-// }
 
 
 //////                  Funcion generadora de numeros aleatorios                  /////////////////
@@ -115,11 +109,15 @@ function numeroAleatorio(min, max) {
 
 function calcularGanancia() {
     dinero = dinero + dineroApostado;
-    movimientos.push(dineroApostado);
+    movimientos.unshift(dineroApostado);
+    let dineroLive = document.getElementById("usuario");
+    dineroLive.innerHTML = `Dinero actual ${dinero}`
 }
 function calcularPerdida() {
     dinero = dinero - dineroApostado;
-    movimientos.push(-dineroApostado);
+    movimientos.unshift(-dineroApostado);
+    let dineroLive = document.getElementById("usuario");
+    dineroLive.innerHTML = `Dinero actual ${dinero}`
 }
 
 
@@ -136,60 +134,54 @@ function calcularTotal(...movimientos){
 
 
 function mostrarMovimientos() {
+    if(movimientos[0] == undefined){
+        swal({
+            title: 'Error',
+            text: 'Usted no hizo ningun movimiento aun',
+            icon: 'error',
+            Button: 'OK'
+        });
+    }
+    else{
         let gananciasDelDia = calcularTotal(...movimientos);
-        let dineroActual = document.createElement("h3");
-        dineroActual.innerHTML = `Su dinero actual es ${dinero} y sus ganancias de hoy son ${gananciasDelDia}
-                                <h3>Sus movimientos son los siguientes: </h3>`                                    ;
-        let lista = document.getElementById("movimientos");
-        lista.appendChild(dineroActual)
-        for (let i = 0; i < movimientos.length; i++) {
-            let movimientosDinero = document.createElement("li");
-            movimientosDinero.innerHTML = `${movimientos[i]}`
-            lista.appendChild(movimientosDinero);
+        let dineroActual = document.getElementById("fraseDineroActual");
+        dineroActual.innerHTML = `Su dinero actual es $${dinero} y sus ganancias de hoy son $${gananciasDelDia}
+                                <h3>Sus ultimos 6 movimientos son los siguientes: </h3>`                                    ;
+        let lista = document.getElementById("listaMovimientos");
+        for (let i = 0; i < 6; i++) {
+            if(movimientos[i] == undefined){
+                let movimientosDineroVacio = document.createElement("li");
+                movimientosDineroVacio.innerHTML = "----------";
+                lista.appendChild(movimientosDineroVacio);
+            }
+            else {
+                let movimientosDinero = document.createElement("li");
+                movimientosDinero.innerHTML = `${movimientos[i]}`;
+                lista.appendChild(movimientosDinero);
+            }
         }
     }
+}
 
+function limpiarListaMovimientos(){
+    let limpiar = document.getElementById("listaMovimientos");
+    limpiar.innerHTML = ""
+}
 
 //////////                Top players          /////////////////////////
-function verTopPlayers(){
     fetch('./ajax/data.json')
     .then( (res) => res.json())
     .then( (data) => {
         data.forEach((jugador) => {
             const li = document.createElement('li')
             li.innerHTML = `
-                <h3>Lista de Top Players</h3>
-                <h4>${jugador.nombre} ${jugador.apellido}</h4>
+                ${jugador.nombre} ${jugador.apellido}
                 <p>Su dinero maximo fue: ${jugador.dinero}</p>
             `
-            let lista = document.getElementById("jugador");
+            let lista = document.getElementById("topPlayers");
             lista.append(li)
         })
     })
-}
-
-
-
-// fetch('./ajax/data.json')
-//     .then( (res) => res.json())
-//     .then( (data) => {
-//         data.forEach((jugador) => {
-//             const li = document.createElement('li')
-//             li.innerHTML = `
-//                 <h3>Lista de Top Players</h3>
-//                 <h4>${jugador.nombre} ${jugador.apellido}</h4>
-//                 <p>Su dinero maximo fue: ${jugador.dinero}</p>
-//             `
-//             let lista = document.getElementById("jugador");
-//             lista.append(li)
-//         })
-//     })
-
-
-
-
-
-
 
 
 

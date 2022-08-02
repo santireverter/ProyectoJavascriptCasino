@@ -111,9 +111,10 @@ header{
     width: 500px;
     display: flex;
     justify-content: center;
-    justify-content: flex-start;
+    justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 .topPlayers{
     border: solid rgba(59, 59, 59, 0.473);
@@ -121,6 +122,28 @@ header{
     height: 500px;
     width: 500px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
 }
+.listaMovimientos{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+.listaMovimientos li{
+    counter-increment: step-counter;
+    margin-bottom: 10px;
+}
+.listaMovimientos li::before {
+    content: counter(step-counter);
+    margin-right: 5px;
+    font-size: 80%;
+    background-color: rgb(0,200,200);
+    color: white;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
 

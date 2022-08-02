@@ -107,9 +107,12 @@
     <div class="juegos" id="juegos">
         <div class="apuesta">
             <h3>Ingrese monto a apostar</h3>
-            <label for="">
-                <input type="number" placeholder="Ingrese monto" id="dineroApostado" class="dineroApostado">
-            </label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" id="dineroApostado">
+            </div>
         </div>
         <div class="orden">
             <div class="ppt" id="ppt">
@@ -149,14 +152,21 @@
         </div>
         <div class="verMovimientos">
             <h3>Para ver sus movimientos y saldo Pulse el boton</h3>
-            <input type="button" value="Mostrar movimientos" id="btnMovimientos">
+            <input class="btn btn-secondary" type="button" value="Mostrar movimientos" id="btnMovimientos">
         </div>
     
     </div>
     <div class="tablas">
         <div class="movimientos" id="movimientos">
             <h3>Movimientos</h3>
-            <ul>
+            <h3 id="fraseDineroActual">Su dinero actual es $0 y sus ganancias de hoy son $0</h3>
+            <ul class="listaMovimientos" id="listaMovimientos">
+                <li ></li>
+                <li ></li>
+                <li ></li>
+                <li ></li>
+                <li ></li>
+                <li ></li>
             </ul>
         </div>
         <div class="topPlayers" id="topPlayers">
