@@ -57,6 +57,7 @@ header{
     align-items: center;
     border:solid rgba(59, 59, 59, 0.473);
     border-radius: 3rem;
+    margin: 0 197px 30px;
 }
 .ppt{
     display: flex;
@@ -99,3 +100,27 @@ header{
 .swal-overlay{
     background-color: rgba(0, 0, 0, 0.356);
 }
+.tablas{
+    display: flex;
+    justify-content: space-around;
+}
+.movimientos{
+    border: solid rgba(59, 59, 59, 0.473);
+    border-radius: 3rem;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+}
+.topPlayers{
+    border: solid rgba(59, 59, 59, 0.473);
+    border-radius: 3rem;
+    height: 500px;
+    width: 500px;
+    display: flex;
+    justify-content: center;
+}
+
